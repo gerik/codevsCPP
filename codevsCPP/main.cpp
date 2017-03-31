@@ -271,14 +271,14 @@ int p1160(){
     
     cout << plus <<endl;
     
-    return 0;
+    return 1160;
 }
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
+    //std::cout << "Hello, World!\n";
     
-    p1160();
+    std::cout << p1160() <<endl;
     
     return 0;
 }
