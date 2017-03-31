@@ -200,28 +200,76 @@ int p1083p(){
 }
 
 int p1083(){
-    
+
     int n;
-    
+
     cin >> n;
-    
+
     double m = (sqrt(8.0 * n + 1) - 1) / 2;
-    
-    int l = (int) m;
-    
+
+    int l    = (int) m;
+
     if(m - l > 0.0) l++;
-    
-    
+
+
     int lMax = (l * l + l)/2;
-    
-    int k = lMax - n;
-    
-    int o = l - k;
-    
+
+    int k    = lMax - n;
+
+    int o    = l - k;
+
     if(l % 2 == 1)
         cout << l + 1 - o <<"/" << o <<endl;
     else
         cout << o <<"/" << l + 1 - o  <<endl;
+
+    return 0;
+}
+int p1160(){
+
+    int n;
+    cin >> n;
+    int num = n * n;
+    int x   = n - 1;
+    int y   = n;
+    int a[n][n];
+    int k = 0,i,j;
+    while(num != 0){
+        for(i = n-k; i > 0 && num != 0; i--){
+            y--;
+            a[x][y] = num;
+            num--;
+        }
+        k++;
+        for(j = n-k;j > 0 && num != 0; j--){
+            x--;
+            a[x][y] = num;
+            num--;
+        }
+        for(i = n-k;i > 0 && num != 0; i--){
+            y++;
+            a[x][y] = num;
+            num--;
+        }
+        k++;
+        for(j = n-k;j > 0 && num != 0; j--){
+            x++;
+            a[x][y] = num;
+            num--;
+        }
+    }
+    
+    int plus = 0;
+    for(x = 0; x < n; x++){
+        for(y = 0; y < n; y++){
+            cout << a[x][y] << " ";
+            if(x == y || x + y == n-1)
+                plus +=a[x][y];
+        }
+        cout << endl;
+    }
+    
+    cout << plus <<endl;
     
     return 0;
 }
