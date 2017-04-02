@@ -316,12 +316,63 @@ int p1212(){
     return 1212;
 }
 
+int p1430(){
+//    int n;
+//    cin >> n;
+//    int a[30001] = {0};
+//    for(int i = 2; i <= n; i++){
+//        if(a[i] == 1)
+//            continue;
+//        int j = 2;
+//        while(i * j <= n){
+//            a[i * j] = 1;
+//            j++;
+//        }
+//        if (a[n] == 1){
+//            cout << "\\n" <<endl;
+//            return 1430;
+//        }
+//    }
+//    if (a[n] == 1){
+//        cout << "\\n";
+//        return 1430;
+//    }
+//    else{
+//        cout << "\\t";
+//    }
+//    cout << endl;
+//    
+//    return 1430;
+    int n,a;
+    
+    cin>>n;
+    
+    if(n==1){cout<<"\\n"<<endl;return 0;}
+    
+    a=sqrt(n);
+    
+    int i;
+    
+    for(i=2;i<=a;i++)
+        
+    {
+        
+        if(n%i==0) {cout<<"\\n"<<endl;return 0;}
+        
+    }
+    
+    if(i>1)cout<<"\\t"<<endl;
+    
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
-    
-    p1212();
+//    
+    p1430();
     cout<<endl;
+
     
     return 0;
 }
