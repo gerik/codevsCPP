@@ -274,11 +274,54 @@ int p1160(){
     return 1160;
 }
 
+int p1012(){
+    int x, y;
+    cin >> x >> y;
+    if(y % x != 0)
+        cout << "0" <<endl;
+    else{
+        int z = y / x;
+        int k = 0;
+        for(int i = 2; i <= z; i++){
+            if(z % i == 0){
+                ++ k;
+                while(z % i == 0)
+                    z = z / i;
+            }
+        }
+        cout << (int)pow(2, k);
+    }
+    return 1012;
+}
+
+int p1212(){
+    int A, B;
+    cin >> A >> B;
+    if(A == 1 || B == 1)  {
+        cout << 1;
+        return 1212;
+    }
+    if(A > B) swap(A, B);
+    int a = A;
+    for(int i = 2;i <= a; i++){
+        while(a % i == 0 && B % i == 0){
+            a /= i;
+            B /= i;
+           // cout << "a = " << a <<endl;
+        }
+       // cout << "B = " << B <<endl;
+    }
+    cout << A / a << endl;
+    
+    return 1212;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
     
-    std::cout << p1160() <<endl;
+    p1212();
+    cout<<endl;
     
     return 0;
 }
