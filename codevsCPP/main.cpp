@@ -366,14 +366,72 @@ int p1430(){
     return 0;
 }
 
+//题目描述 Description
+//将十进制数n转换成m进制数 m<=16
+//
+//n<=100
+//
+//输入描述 Input Description
+//共一行
+//
+//n和m
+//
+//输出描述 Output Description
+//共一个数
+//
+//表示n的m进制
+//
+//样例输入 Sample Input
+//样例1：10 2
+//
+//样例2:100 15
+//
+//样例输出 Sample Output
+//样例1：1010
+//
+//样例2:6A
+
+int p1474(){
+    int n, m;
+    char a[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+    char s[10] = {0};
+    cin >> n >> m;
+    if(m < 2)
+        return 0;
+    int i = 0;
+    while(n > 0){
+        s[i++] = a[n % m];
+        n /= m;
+    }
+    while(--i>=0){
+        cout << s[i];
+    }
+    return 1474;
+}
+
+int p1475(){
+    char n[10] ={'\0'};
+    int m;
+    cin >> n;
+    cin >> m;
+    int res = 0;
+    for(int i = 0; n[i]!= '\0'; i++){
+        if(n[i] >= 'A')
+        res = (n[i] - 'A' + 10) + res * m;
+        else
+        res = (n[i] - '0') + res * m;
+    }
+    cout << res << endl;
+    return 1475;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
 //    
-    p1430();
+    p1475();
     cout<<endl;
 
-    
     return 0;
 }
 
