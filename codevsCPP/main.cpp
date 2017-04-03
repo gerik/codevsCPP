@@ -425,11 +425,38 @@ int p1475(){
     return 1475;
 }
 
+int p1011(){
+    int n;
+    int f[1001];
+    cin >> n;
+    f[1] = 1;
+    for(int i = 2; i <= n; i++){
+        f[i] = 1;
+        for(int j = 1; j <= i/2; j++){
+            f[i] += f[j];
+        }
+    }
+    cout << f[n] << endl;
+    return 1011;
+}
+
+int p1978(){
+    int n, dp[40];
+    cin >> n;
+    dp[1] = dp[2] = 1;
+    for(int i = 3; i <=n; i++){
+        dp[i] = dp[i-1] + dp[i-2];
+    }
+    cout << dp[n];
+    
+    return 1978;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
 //    
-    p1475();
+    p1978();
     cout<<endl;
 
     return 0;
