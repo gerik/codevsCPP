@@ -522,11 +522,51 @@ int p1501() {
     return 1501;
 }
 
+int p1842helper(int x) {
+    if(x >= 0 ) {
+        return 5;
+    }
+    else{
+        return p1842helper(x + 1) + p1842helper(x + 2) + 1;
+    }
+}
+int p1842() {
+    int x;
+    cin >> x;
+    
+    cout << p1842helper(x);
+    
+    return 1842;
+}
+
+int p3038helper(int n, int s) {
+    if (1 == n) return s;
+    if (n >= INT_MAX || n <= 0) return -1;
+    if (n % 2 == 1) {
+        s++;
+        return p3038helper(3 * n + 1, s);
+    }
+    else {
+        s++;
+        return p3038helper(n / 2, s);
+    }
+}
+
+int p3038() {
+    int T, n, s = 0;
+    cin >> T;
+    for (int i = 0; i < T; i++) {
+        cin >> n;
+        cout << p3038helper(n,s) <<endl;
+    }
+    return 3038;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
 //    
-    p1501();
+    p3038();
     cout<<endl;
 
     return 0;
