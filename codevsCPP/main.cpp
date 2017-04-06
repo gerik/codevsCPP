@@ -9,6 +9,7 @@
 #include <iostream>
 #include <algorithm>
 #include <math.h>
+//#include <stdio.h>
 
 using namespace std;
 
@@ -452,11 +453,80 @@ int p1978(){
     return 1978;
 }
 
+//int p1501(){
+//    int n;
+//    cin >> n;
+//    int a[30] = {0};
+//    int w = 1,h = 1;
+//    for (int i = 0; i < n * 2; i++) {
+//        cin >> a[i];
+//    }
+//    int k = 1;
+//    int nn = n;
+//    while (nn > (1 << k) - 1) {
+//        k++;
+//        nn = (1 << k) - 1;
+//    };
+//    int m = 0;
+//    for (int i = 1; m < nn * 2 ; i++) {
+//        int tw = 0;
+//        bool th = false;
+//        for (int j = 0; j < 1 << i; j++ ) {
+//            if (a[j + m] != 0) {
+//                tw++;
+//                th = true;
+//            }
+//        }
+//        m = m + (1 << i);
+//        if (th) h++;
+//        if (tw > w) w = tw;
+//    }
+//    cout << w << " " << h;
+//    return 1501;
+//}
+
+void p1501helper(int x, int y, int a[], int b[], int w[], int *maxx, int *y1) {
+    if (a[x] >0) {
+        w[y]++;
+        p1501helper(a[x], y + 1,a, b, w, maxx, y1);
+    }
+    if (b[x] > 0) {
+        w[y]++;
+        p1501helper(b[x], y + 1,a, b, w, maxx, y1);
+    }
+        *y1 = (int)max(y, *y1);
+}
+
+int p1501() {
+    
+    int n;
+    int a[16] = {0}, b[16] = {0}, w[16] = {0}, maxx = -1, y1 = -1;
+    
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i] >> b[i];
+    }
+    
+    if (n == 1){
+        cout << "1" << " " << "1";
+        return 0;
+    }
+    
+    p1501helper(1, 1, a, b, w, &maxx, &y1);
+    
+    for (int i = 1; i <= y1; i++) {
+        maxx = max(maxx,w[i]);
+    }
+    cout << maxx << " " << y1;
+    
+    return 1501;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
 //    
-    p1978();
+    p1501();
     cout<<endl;
 
     return 0;
