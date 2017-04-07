@@ -562,11 +562,82 @@ int p3038() {
     return 3038;
 }
 
+
+int pre_order(int i, int L[], int R[]){
+    if (i == 0) {
+        return 0;
+    }
+    cout << i << " ";
+    pre_order(L[i], L, R);
+    pre_order(R[i], L, R);
+    return 0;
+}
+
+int in_order(int i, int L[], int R[]){
+    if (i == 0) {
+        return 0;
+    }
+
+    in_order(L[i], L, R);
+    cout << i << " ";
+    in_order(R[i], L, R);
+    return 0;
+}
+
+int post_order(int i, int L[], int R[]){
+    if (i == 0) {
+        return 0;
+    }
+    
+    post_order(L[i], L, R);
+    post_order(R[i], L, R);
+    cout << i << " ";
+    return 0;
+}
+
+int p3143() {
+    int n;
+    int L[17] = {0}, R[17] = {0};
+    L[0] = 1;
+    cin >> n;
+    for (int i = 1; i < n; i++) {
+        cin >> L[i] >> R[i];
+    }
+
+    pre_order(L[0], L, R);
+    cout << endl;
+    in_order(L[0], L, R);
+    cout << endl;
+    post_order(L[0], L, R);
+    return 3143;
+}
+
+void hanoi(int n,char a,char b,char c)
+{
+    if(n==1)
+        cout<<n<<" from "<<a<<" to "<<c<<endl;
+    else
+    {
+        hanoi(n-1,a,c,b);
+        cout<<n<<" from "<<a<<" to "<<c<<endl;
+        hanoi(n-1,b,a,c);
+    }
+}
+
+
+int p3145() {
+    int n;
+    cin >> n;
+    cout << (1<<n) - 1 <<endl;
+    hanoi(n, 'A' ,'B', 'C');
+    return 3145;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
-//    
-    p3038();
+
+    p3145();
     cout<<endl;
 
     return 0;
