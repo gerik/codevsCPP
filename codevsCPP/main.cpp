@@ -633,11 +633,35 @@ int p3145() {
     return 3145;
 }
 
+int p1098() {
+    int N, ans = 0;
+    cin >> N;
+    int A[N];
+    int n = 0, sum = 0;
+    while (n < N) {
+        cin >> A[n];
+        sum +=  A[n];
+        n++;
+    }
+    int avg = sum / N;
+
+    for (int i = 0; i < N; i++) {
+        if (A[i] == avg) continue;
+        if (A[i] != avg) {
+            A[i + 1] += A[i] - avg;
+            cout << A[i + 1] <<endl;
+            ans++;
+        }
+    }
+    cout << ans;
+    return 1098;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
 
-    p3145();
+    p1098();
     cout<<endl;
 
     return 0;
