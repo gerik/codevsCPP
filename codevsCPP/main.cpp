@@ -649,7 +649,7 @@ int p1098() {
         if (A[i] == avg) continue;
         if (A[i] != avg) {
             A[i + 1] += A[i] - avg;
-            cout << A[i + 1] <<endl;
+           // cout << A[i + 1] <<endl;
             ans++;
         }
     }
@@ -657,11 +657,42 @@ int p1098() {
     return 1098;
 }
 
+struct line {
+    int left, right;
+};
+
+bool cmp(line a, line b){
+    return a.right < b.right;
+}
+
+int p1214() {
+    int n;
+    cin >> n;
+    line a[n];
+    for (int i = 0; i < n; i++) {
+        cin >> a[i].left >> a[i].right;
+        if (a[i].left > a[i].right) {
+            swap(a[i].left, a[i].right);
+        }
+    }
+    sort(a, a + n, cmp);
+    
+    int max_right = a[0].right, cnt = 1;
+    for (int i = 1; i < n; i++) {
+        if (a[i].left >= max_right) {
+            max_right = a[i].right;
+            cnt++;
+        }
+    }
+    cout << cnt << endl;
+    return 1214;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
 
-    p1098();
+    p1214();
     cout<<endl;
 
     return 0;
