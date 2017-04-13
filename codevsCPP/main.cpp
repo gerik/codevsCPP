@@ -9,6 +9,7 @@
 #include <iostream>
 #include <algorithm>
 #include <math.h>
+#include <unordered_map>
 //#include <stdio.h>
 
 using namespace std;
@@ -688,11 +689,314 @@ int p1214() {
     return 1214;
 }
 
+
+int p3115(){
+    string A, B;
+    bool minus = false;
+    cin >> A >> B;
+    if (A.size() < B.size()) {
+        swap(A, B);
+        minus = true;
+    }
+    
+    for (long i = B.size(); i < A.size(); i++) {
+        B = "0" + B;
+    }
+    
+    for (long i = 0; i < A.size(); i++) {
+        if (A[i] > B[i]) {
+            break;
+        }
+        else if (A[i] == B[i]) continue;
+        else {
+            swap(A, B);
+            minus = true;
+            break;
+        }
+    }
+    
+    for (long i = A.size() - 1; i >= 0; i--) {
+        if(A[i] < '0' || A[i] < B[i]) {
+            A[i - 1] -= 1;
+            A[i] += 10;
+        }
+            A[i] = '0' + A[i] - B[i];
+    }
+
+    long i = 0;
+    while (i < A.size()) {
+        if (A[i] == '0'){
+            i++;
+        }
+        else
+            break;
+    }
+    if (i == A.size()) {
+        i--;
+    }
+    if (minus) {
+        cout << "-";
+    }
+    while (i < A.size()) {
+        cout <<A[i];
+        i++;
+    }
+    
+    return 3115;
+    
+}
+
+int p3116(){
+    string A, B;
+    cin >> A >> B;
+    if (A.size() < B.size()) {
+        swap(A, B);
+    }
+    
+    for (long i = B.size(); i < A.size(); i++) {
+        B = "0" + B;
+    }
+    
+    for (long i = 0; i < A.size(); i++) {
+        if (A[i] > B[i]) {
+            break;
+        }
+        else if (A[i] == B[i]) continue;
+        else {
+            swap(A, B);
+            break;
+        }
+    }
+    
+    
+    int carry = 0;
+    for (long i = A.size() - 1; i >= 0; i--) {
+        int temp = A[i] - '0' + B[i] -'0' + carry;
+        if(temp > 9) {
+            A[i] = temp - 10 + '0';
+            carry = 1;
+        }
+        else{
+            A[i] = temp + '0';
+            carry = 0;
+        }
+    }
+    
+    if (1 == carry) {
+        A = "1" + A;
+    }
+    
+    long i = 0;
+    while (i < A.size()) {
+        cout <<A[i];
+        i++;
+    }
+    
+    return 3116;
+    
+}
+
+string p3116(string A, string B){
+
+    if (B == "0") {
+        return "0";
+    }
+    
+    if (A.size() < B.size()) {
+        swap(A, B);
+    }
+    
+    for (long i = B.size(); i < A.size(); i++) {
+        B = "0" + B;
+    }
+    
+    for (long i = 0; i < A.size(); i++) {
+        if (A[i] > B[i]) {
+            break;
+        }
+        else if (A[i] == B[i]) continue;
+        else {
+            swap(A, B);
+            break;
+        }
+    }
+    
+    
+    int carry = 0;
+    for (long i = A.size() - 1; i >= 0; i--) {
+        int temp = A[i] - '0' + B[i] -'0' + carry;
+        if(temp > 9) {
+            A[i] = temp - 10 + '0';
+            carry = 1;
+        }
+        else{
+            A[i] = temp + '0';
+            carry = 0;
+        }
+    }
+    
+    if (1 == carry) {
+        A = "1" + A;
+    }
+    
+    return A;
+    
+}
+
+string p3117helper_map(string A, char b){
+    unordered_map <int, string> map;
+    int ib = b - '0';
+    if(map.find(ib) == map.end()){
+        int carry = 0;
+        int temp = 0;
+        for (long i = A.size() - 1; i >= 0; i--) {
+            temp = (A[i] - '0') * ib + carry;
+            if(temp > 9) {
+                carry = temp / 10;
+                A[i] = temp % 10 + '0';
+            }
+            else {
+                A[i] = temp + '0';
+                carry = 0;
+            }
+        }
+        if (carry > 0) {
+            char c ='0' + carry;
+            A = c + A;
+        }
+        map[ib] = A;
+        return A;
+    }
+    else{
+        return map[ib];
+    }
+    return A;
+}
+
+string p3117helper_m(string M[], string A, char b){
+    int ib = b - '0';
+    if(M[ib] == ""){
+        int carry = 0;
+        int temp = 0;
+        for (long i = A.size() - 1; i >= 0; i--) {
+            temp = (A[i] - '0') * ib + carry;
+            if(temp > 9) {
+                carry = temp / 10;
+                A[i] = temp % 10 + '0';
+            }
+            else {
+                A[i] = temp + '0';
+                carry = 0;
+            }
+        }
+        if (carry > 0) {
+            char c ='0' + carry;
+            A = c + A;
+        }
+        M[ib] = A;
+        return A;
+    }
+    else{
+        return M[ib];
+    }
+    return A;
+}
+
+
+string p3117helper(string A, char b){
+    int ib = b - '0';
+    int carry = 0;
+    int temp = 0;
+    for (long i = A.size() - 1; i >= 0; i--) {
+        temp = (A[i] - '0') * ib + carry;
+        if(temp > 9) {
+            carry = temp / 10;
+            A[i] = temp % 10 + '0';
+        }
+        else {
+            A[i] = temp + '0';
+            carry = 0;
+        }
+    }
+    if (carry > 0) {
+        char c ='0' + carry;
+        A = c + A;
+    }
+    return A;
+}
+
+int p3117(){
+    string A, B;
+    string M[10] = {""};
+    cin >> A >> B;
+    
+    if (A == "0" || B == "0") {
+        cout << "0";
+        return 0;
+    }
+    
+    if (A.size() < B.size()) {
+        swap(A, B);
+    }
+    string ans = "0";
+    string zero = "";
+    for (long j = B.size() - 1; j >= 0; j--) {
+        string temp = p3117helper_m(M, A, B[j]) + zero;
+        ans = p3116(ans, temp);
+        zero += "0";
+    }
+    
+    cout << ans;
+    
+    return 3116;
+}
+
+int p1014() {
+
+    int n, v, thing, f[20001];
+    
+    cin >> v >> n;
+    
+    memset(f, 0,  sizeof(f));
+    
+    for(int i=1; i<=n; ++i){
+        cin >> thing;
+        for(int j=v; j>=thing; j--){
+            f[j] = max(f[j-thing]+thing, f[j]);
+        }
+    }
+    cout << v-f[v];
+    return 0;
+}
+
+int p1014b() {
+   
+    int w[35];
+    
+    int f[20005];
+    
+    int n,v;
+    memset(f, 0, sizeof(f));
+    scanf("%d%d",&v,&n);
+    
+    for (int i=1;i<=n;i++) scanf("%d",&w[i]);
+    for (int i=1;i<=n;i++){
+        
+        for (int j=v;j>=w[i];j--){
+            f[j]=max(f[j],f[j-w[i]]+w[i]);
+        }
+    }
+    
+    printf("%d",v-f[v]);
+    
+    return 0;
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
 
-    p1214();
+    p1014b();
     cout<<endl;
 
     return 0;
