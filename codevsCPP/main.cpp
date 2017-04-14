@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <math.h>
 #include <unordered_map>
+#include <array>
 //#include <stdio.h>
 
 using namespace std;
@@ -992,13 +993,83 @@ int p1014b() {
     return 0;
 }
 
+int p1068() {
+    int n, m;
+    int s[400];
+    int a = 0, b = 0, c = 0, d = 0;
+    static int f[41][41][41][41] = {0};
+    //static array<array<array<array<int,50>,50>,50>,17> f;
+    cin >> n >> m;
+    for (int i = 0; i < n; i++) {
+        cin >> s[i];
+    }
+    for (int x,j = 1; j <=m; j++) {
+        cin >> x;
+        switch (x) {
+            case 1:
+                a++;
+                break;
+            case 2:
+                b++;
+                break;
+            case 3:
+                c++;
+                break;
+            default:
+                d++;
+                break;
+        }
+    }
+    for (int i = 1; i <= a + 1; i++) {
+        for (int j = 1; j <= b + 1; j++) {
+            for (int k = 1; k <= c + 1; k++) {
+                for (int l = 1 ; l <= d + 1; l++) {
+                    f[i][j][k][l] = max(max(f[i-1][j][k][l], f[i][j-1][k][l]),max(f[i][j][k-1][l],f[i][j][k][l-1]))
+                    +s[(i-1)+(j-1)*2+(k-1)*3+(l-1)*4];
+                }
+            }
+        }
+    }
+    cout << f[a + 1][b + 1][c + 1][d + 1];
+    return 1068;
+}
+
+
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
-
-    p1014b();
+    p1068();
     cout<<endl;
 
     return 0;
 }
-
+//int n,m,a[400],dp[50][50][50][50],b[5],x;
+//int max(int x,int y){return x>y?x:y;}
+//
+//int main()
+//
+//{
+//    
+//    scanf("%d%d",&n,&m);
+//    
+//    for(int i=1;i<=n;i++)scanf("%d",&a[i]);
+//    
+//    for(int i=1;i<=m;i++)scanf("%d",&x),b[x]++;
+//    
+//    for(int i=1;i<=b[1]+1;i++)
+//        
+//        for(int j=1;j<=b[2]+1;j++)
+//            
+//            for(int k=1;k<=b[3]+1;k++)
+//                
+//                for(int l=1;l<=b[4]+1;l++)
+//                    
+//                    dp[i][j][k][l]=max(max(dp[i-1][j][k][l],dp[i][j-1][k][l]),max(dp[i][j][k-1][l],dp[i][j][k][l-1]))+a[1+(i-1)+(j-1)*2+(k-1)*3+(l-1)*4];
+//    
+//    printf("%d",dp[b[1]+1][b[2]+1][b[3]+1][b[4]+1]);
+//    cout <<endl;
+//    
+//    return 0;
+//    
+//}
