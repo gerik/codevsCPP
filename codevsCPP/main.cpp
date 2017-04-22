@@ -952,6 +952,26 @@ int p3117(){
     return 3116;
 }
 
+//1014 装箱问题  2001年NOIP全国联赛普及组
+//时间限制: 1 s
+//空间限制: 128000 KB
+//题目等级 : 黄金 Gold
+//题解
+//题目描述 Description
+//有一个箱子容量为V（正整数，0＜＝V＜＝20000），同时有n个物品（0＜n＜＝30），每个物品有一个体积（正整数）。
+//
+//要求n个物品中，任取若干个装入箱内，使箱子的剩余空间为最小。
+//
+//输入描述 Input Description
+//一个整数v，表示箱子容量
+//
+//一个整数n，表示有n个物品
+//
+//接下来n个整数，分别表示这n 个物品的各自体积
+//
+//输出描述 Output Description
+//一个整数，表示箱子剩余空间。
+
 int p1014() {
 
     int n, v, thing, f[20001];
@@ -992,6 +1012,53 @@ int p1014b() {
     
     return 0;
 }
+
+//1068 乌龟棋  2010年NOIP全国联赛提高组
+//时间限制: 1 s
+//空间限制: 128000 KB
+//题目等级 : 钻石 Diamond
+//题解
+//题目描述 Description
+//小明过生日的时候，爸爸送给他一副乌龟棋当作礼物。 乌龟棋的棋盘是一行N个格子，每个格子上一个分数（非负整数）。棋盘第1格是唯一 的起点，第N格是终点，游戏要求玩家控制一个乌龟棋子从起点出发走到终点。
+//
+//…… 1 2 3 4 5 ……N 乌龟棋中M张爬行卡片，分成4种不同的类型（M张卡片中不一定包含所有4种类型 的卡片，见样例），每种类型的卡片上分别标有1、2、3、4四个数字之一，表示使用这种卡 片后，乌龟棋子将向前爬行相应的格子数。游戏中，玩家每次需要从所有的爬行卡片中选择 一张之前没有使用过的爬行卡片，控制乌龟棋子前进相应的格子数，每张卡片只能使用一次。 游戏中，乌龟棋子自动获得起点格子的分数，并且在后续的爬行中每到达一个格子，就得到 该格子相应的分数。玩家最终游戏得分就是乌龟棋子从起点到终点过程中到过的所有格子的 分数总和。 很明显，用不同的爬行卡片使用顺序会使得最终游戏的得分不同，小明想要找到一种卡 片使用顺序使得最终游戏得分最多。 现在，告诉你棋盘上每个格子的分数和所有的爬行卡片，你能告诉小明，他最多能得到 多少分吗？
+//
+//输入描述 Input Description
+//输入的每行中两个数之间用一个空格隔开。 第1行2个正整数N和M，分别表示棋盘格子数和爬行卡片数。 第2行N个非负整数，a1a2……aN
+//
+//，其中ai表示棋盘第i个格子上的分数。 第3行M个整数，b1b2……bM
+//
+//，表示M张爬行卡片上的数字。 输入数据保证到达终点时刚好用光M张爬行卡片，即N - 1=∑(1->M) bi
+//
+//输出描述 Output Description
+//输出一行一个整数
+//
+//样例输入 Sample Input
+//13 8
+//
+//4 96 10 64 55 13 94 53 5 24 89 8 30
+//
+//1 1 1 1 1 2 4 1
+//
+//样例输出 Sample Output
+//455
+//
+//数据范围及提示 Data Size & Hint
+//【数据范围】
+//
+//对于30%的数据有1 ≤ N≤ 30，1 ≤M≤ 12。
+//
+//对于50%的数据有1 ≤ N≤ 120，1 ≤M≤ 50，且4 种爬行卡片，每种卡片的张数不会超
+//
+//过20。
+//
+//对于100%的数据有1 ≤ N≤ 350，1 ≤M≤ 120，且4 种爬行卡片，每种卡片的张数不会
+//
+//超过40；0 ≤ ai ≤ 100，1 ≤ i ≤ N；1 ≤ bi ≤ 4，1 ≤ i ≤M。输入数据保证N−1=ΣM
+//
+//i b
+//
+//1
 
 int p1068() {
     int n, m;
@@ -1034,42 +1101,234 @@ int p1068() {
     return 1068;
 }
 
+//1044 拦截导弹  1999年NOIP全国联赛提高组
+//时间限制: 1 s
+//空间限制: 128000 KB
+//题目等级 : 黄金 Gold
+//题解
+//题目描述 Description
+//某国为了防御敌国的导弹袭击，发展出一种导弹拦截系统。但是这种导弹拦截系统有一个缺陷：虽然它的第一发炮弹能够到达任意的高度，但是以后每一发炮弹都不能高于前一发的高度。某天，雷达捕捉到敌国的导弹来袭。由于该系统还在试用阶段，所以只有一套系统，因此有可能不能拦截所有的导弹。
+//
+//
+//
+//输入描述 Input Description
+//输入导弹依次飞来的高度（雷达给出的高度数据是不大于30000的正整数）
+//
+//
+//
+//输出描述 Output Description
+//输出这套系统最多能拦截多少导弹，如果要拦截所有导弹最少要配备多少套这种导弹拦截系统。
+//
+//样例输入 Sample Input
+//8 389 207 155 300 299 170 158 65
+//
+//样例输出 Sample Output
+//6
+//
+//2
+//
+//数据范围及提示 Data Size & Hint
+//导弹的高度<=30000，导弹个数<=20
+
+//int p1044() {
+//    int height[30], size = 1;
+////    while (cin >> height[size]) size++;
+//    int n;
+//    cin >> n;
+//    for (int i = 0; i < n; i++) {
+//        cin >> height[size];
+//        size++;
+//    }
+////    for (int i = 0; i <= n; i++) {
+////        cout << height[i] <<endl;
+////    }
+//    int a[size], dp[size], result = 0, m = 0;
+//    memset(a, 0, sizeof(a));
+//    memset(dp, 0, sizeof(dp));
+//    
+//    for (int i = 0; i < size; i++) {
+//        dp[i] = 1;
+//        for (int j = 0; j < i; j++) {
+//            if (height[j] >= height[i]) {
+//                dp[i] = max(dp[i], dp[j] + 1);
+//            }
+//            m = max(m, dp[i]);
+//        }
+//
+//    }
+//    
+//    a[result] = height[1];
+//    for (int i = 1; i < size; i++) {
+//        int tmp = 0;
+//        for (int j = 1; j <= result; j++) {
+//            if (a[j] >= height[i] && (tmp == 0 || a[j] < a[tmp])) {
+//                tmp = j;
+//            }
+//        }
+//        if (tmp == 0) {
+//            result++;
+//            a[result] = height[i];
+//        }
+//        else{
+//            a[tmp] = height[i];
+//        }
+//    }
+//    cout << m << endl << result << endl;
+//    return 1044;
+//}
+int p1044() {//7 300 250 275 252 200 138 245
+    int height[30], size = 1;
+    //while (cin >> height[size]) size++;
+        int n;
+        cin >> n;
+        for (int i = 0; i < n; i++) {
+            cin >> height[size];
+            size++;
+        }
+    int a[size], dp[size], result = 0, m = 0;
+    memset(a, 0, sizeof(a));
+    memset(dp, 0, sizeof(dp));
+    
+    for (int i = 0; i < size; i++) {
+        dp[i] = 1;
+        for (int j = 0; j < i; j++) {
+            if (height[j] >= height[i]) {
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
+            m = max(m, dp[i]);
+        }
+        
+    }
+    
+    a[result] = height[1];
+    for (int i = 1; i < size; i++) {
+        int tmp = 0;
+        for (int j = 1; j <= result; j++) {
+            if (a[j] >= height[i] && (tmp == 0 || a[j] < a[tmp])) {
+                tmp = j;
+            }
+        }
+        if (tmp == 0) {
+            result++;
+            a[result] = height[i];
+        }
+        else{
+            a[tmp] = height[i];
+        }
+    }
+    cout << m << endl << result << endl;
+    return 1576;
+}
+
+int p1576() {
+    int height[50010];
+    int n;
+    cin >> n;
+    for (int i = 1; i < n + 1; i++) {
+        cin >> height[i];
+    }
+
+    int dp[n], m = 0;
+    memset(dp, 0, sizeof(dp));
+    
+    for (int i = 1; i <= n; i++) {
+        dp[i] = 1;
+        for (int j = 1; j < i; j++) {
+            if (height[j] < height[i]) {
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
+            m = max(m, dp[i]);
+            //cout << m <<endl;
+        }
+    }
+    
+    cout << m << endl;
+    return 1576;
+}
+
+//3027 线段覆盖 2
+//时间限制: 1 s
+//空间限制: 128000 KB
+//题目等级 : 黄金 Gold
+//题解
+//题目描述 Description
+//数轴上有n条线段，线段的两端都是整数坐标，坐标范围在0~1000000，每条线段有一个价值，请从n条线段中挑出若干条线段，使得这些线段两两不覆盖（端点可以重合）且线段价值之和最大。
+//
+//n<=1000
+//
+//输入描述 Input Description
+//第一行一个整数n，表示有多少条线段。
+//
+//接下来n行每行三个整数, ai bi ci，分别代表第i条线段的左端点ai，右端点bi（保证左端点<右端点）和价值ci。
+//
+//输出描述 Output Description
+//输出能够获得的最大价值
+//样例输入 Sample Input
+//3
+//
+//1 2 1
+//
+//2 3 2
+//
+//1 3 4
+//
+//样例输出 Sample Output
+//4
+//
+//数据范围及提示 Data Size & Hint
+//数据范围
+//
+//对于40%的数据，n≤10；
+//
+//对于100%的数据，n≤1000；
+//
+//0<=ai,bi<=1000000
+//
+//0<=ci<=1000000
+
+struct Line3027{
+    int a;
+    int b;
+    int c;
+};
+
+bool cmp3027(Line3027 a, Line3027 b){
+    return a.a < b.a;
+}
+
+
+int p3027() {
+    int n;
+    cin >> n;
+    int dp[1010];
+    int res = 0;
+    memset(dp, 0, sizeof(dp));
+
+    struct Line3027 m[n];
+    for (int i = 0; i < n; i++) {
+        cin >> m[i].a >> m[i].b >> m[i].c;
+    }
+    sort(m, m + n, cmp3027);
+
+    for (int i = 0; i < n; i++) {
+        dp[i] = m[i].c;
+        for (int j = 0; j < i; j++) {
+            if (m[i].a >= m[j].b ) {
+                dp[i] = max(dp[j] + m[i].c, dp[i]);
+            }
+        }
+        res = max(res, dp[i]);
+    }
+    cout << res << endl;
+    return 3027;
+}
 
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     //std::cout << "Hello, World!\n";
-    p1068();
+    p3027();
     cout<<endl;
 
     return 0;
 }
-//int n,m,a[400],dp[50][50][50][50],b[5],x;
-//int max(int x,int y){return x>y?x:y;}
-//
-//int main()
-//
-//{
-//    
-//    scanf("%d%d",&n,&m);
-//    
-//    for(int i=1;i<=n;i++)scanf("%d",&a[i]);
-//    
-//    for(int i=1;i<=m;i++)scanf("%d",&x),b[x]++;
-//    
-//    for(int i=1;i<=b[1]+1;i++)
-//        
-//        for(int j=1;j<=b[2]+1;j++)
-//            
-//            for(int k=1;k<=b[3]+1;k++)
-//                
-//                for(int l=1;l<=b[4]+1;l++)
-//                    
-//                    dp[i][j][k][l]=max(max(dp[i-1][j][k][l],dp[i][j-1][k][l]),max(dp[i][j][k-1][l],dp[i][j][k][l-1]))+a[1+(i-1)+(j-1)*2+(k-1)*3+(l-1)*4];
-//    
-//    printf("%d",dp[b[1]+1][b[2]+1][b[3]+1][b[4]+1]);
-//    cout <<endl;
-//    
-//    return 0;
-//    
-//}
